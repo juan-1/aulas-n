@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script src="componentes/jquery-1.10.2.min.js"></script>
+<script>
+$(document).ready(function(e) {
+    //alert("esta funcionando el jquery");
+	
+});
+
+function login()
+{
+	$("#mensaje").html("");
+	//alert("login")
+	var datos="action=login&"+$("#frm_inicio").serialize();
+	$.post("../../controlador/loginController.php",datos,function(data)
+	{
+		alert(data)
+		$("#mensaje").html(data);
+	});
+}
+</script>
+</head>
+<body>
+<center>
+<h1>Bienvenido</h1>
+</center>
+<form id="frm_inicio">
+<table align="center" width="400" border="1">
+  <tr>
+    <td width="139">Usuario:</td>
+    <td width="245"><input type="text" name="usu" /></td>
+  </tr>
+  <tr>
+    <td>Contraseña</td>
+    <td><input type="text" name="pwd" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+   <input type="button"  onclick="login()" value="Acpetar" />
+    </td>
+  </tr>
+</table>
+</form>
+<center>
+<h3 id="mensaje"></h3>
+</center>
+</body>
+</html>
